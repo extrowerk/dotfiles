@@ -1,0 +1,4 @@
+# Write your default config options here!
+
+# Multithreading
+lavdopts=threads=4

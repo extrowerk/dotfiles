@@ -1,0 +1,8 @@
+[user]
+	email = zmizsei@extrowerk.com
+	name = Zoltán Mizsei
+[pack]
+	threads = 4
+[gui]
+	editor = lpe
+	historybrowser = lpe

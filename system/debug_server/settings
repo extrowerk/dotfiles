@@ -1,0 +1,10 @@
+default_action user
+
+executable_actions {
+	/boot/system/bin/transmission-daemon kill
+	/boot/system/bin/fish kill
+	/boot/system/apps/QupZilla/QupZilla kill
+	/boot/system/apps/Otter-Browser/Otter-Browser kill
+	/boot/system/apps/RetroShare/RetroShare kill
+	/boot/system/apps/Trojita/Trojita kill
+}
