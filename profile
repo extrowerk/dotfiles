@@ -67,3 +67,7 @@ alias irssi="irssi --home=/boot/home/config/settings/irssi"
 function gco {
 	command git checkout `echo "$1" | cut -d : -f2`
 }
+
+export PS1="\[\e[36m\]\w\[\e[m\]\[\e[31m\]❯\[\e[m\]\[\e[33m\]❯\[\e[m\]\[\e[32m\]❯\[\e[m\] "
+shopt -s autocd
+shopt -s cdspell
