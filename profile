@@ -1,11 +1,3 @@
-function ag {
-	command ag -i -Q -t -W 70 --color-match 31\;31 --color-line-number 2\;33 --color-path 2\;32 "$1";
-}
-
-#function ag {
-#	command grep --color=auto -r -i "$1" ./*
-#}
-
 # Receptben keresés
 function inrecipe { 
 	/bin/ag /Ports/haikuports/*/*/*.recipe
@@ -13,7 +5,15 @@ function inrecipe {
 
 # Képfeltoltés
 function chunkio {
-	curl -u miqlas:chunkiojelszo -sT "$1" chunk.io
+	link=`curl -s -u miqlas:chunkiojelszo -sT "$1" chunk.io`
+	echo "$link"
+	clipboard --copy="$link"
+}
+
+function share {
+	link=`curl -s -F"file=@$1" http://0x0.st`
+	echo "$link"
+	clipboard --copy="$link"
 }
 
 # Szövegmegosztó (használata : parancs | tb
@@ -68,6 +68,22 @@ function gco {
 	command git checkout `echo "$1" | cut -d : -f2`
 }
 
-export PS1="\[\e[36m\]\w\[\e[m\]\[\e[31m\]❯\[\e[m\]\[\e[33m\]❯\[\e[m\]\[\e[32m\]❯\[\e[m\] "
+parse_git_branch() {
+     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+
 shopt -s autocd
 shopt -s cdspell
+
+CYAN="$(tput setaf 6)"
+RED="$(tput setaf 1)"
+YELLOW="$(tput setaf 3)"
+GREEN="$(tput setaf 2)"
+RESET="$(tput sgr0)"
+ARROW="❯"
+#ARROW=">"
+PS1='\[${CYAN}\] \w$(parse_git_branch)\[${RED}\]\[${ARROW}\]\[${YELLOW}\]\[${ARROW}\]\[${GREEN}\]\[${ARROW}\]\[${RESET}\] '
+#PS1='\[${CYAN}\] \w$(parse_git_branch) \[${GREEN}\]#\[${RESET}\] '
+#PS1='\w$(parse_git_branch) # '
+
+PATH=$PATH:/boot/home/.gem/ruby/2.2.0/bin

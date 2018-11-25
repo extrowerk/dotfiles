@@ -24,8 +24,13 @@ done
 
 ifconfig /dev/net/iprowifi4965/0 -ht &
 
-launch_roster restart x-vnd.haiku-media_server &
+#launch_roster restart x-vnd.haiku-media_server &
 
 mpd &
 
 tor &
+
+ramdisk create -s 1gb
+mkfs -q -t bfs /dev/disk/virtual/ram/0/raw RAMDisk
+mountvolume RAMDisk
+

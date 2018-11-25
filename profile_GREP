@@ -68,3 +68,10 @@ alias irssi="irssi --home=/boot/home/config/settings/irssi"
 function gco {
 	command git checkout `echo "$1" | cut -d : -f2`
 }
+
+CYAN=$(tput setaf 6)
+RED=$(tput setaf 1)
+YELLOW=$(tput setaf 3)
+GREEN=$(tput setaf 2)
+RESET=$(tput sgr0)
+PS1='\[$CYAN\]\w$(parse_git_branch) \[$RED\]\[❯\]\[$YELLOW\]\[❯\]\[$GREEN\]\[❯\]\[$RESET\] '

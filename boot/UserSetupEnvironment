@@ -9,4 +9,5 @@
 # export IS_COMPUTER_ON=1
 
 #XDG_CONFIG_HOME
-. /boot/system/settings/etc/profile.d/xdg_basedirs.sh
+#. /boot/system/settings/etc/profile.d/xdg_basedirs.sh
+
